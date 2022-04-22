@@ -1,10 +1,14 @@
 const connectToMongo = require("./db");
 const express = require('express')
+var cors = require('cors') 
+
 connectToMongo();
 
 const app = express()
 const port = 5000
 
+
+app.use(cors())
 // Available routes 
 app.use(express.json());
 
@@ -17,7 +21,7 @@ app.use('/api/notes',require('./routes/notes'))
 // })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port at http://localhost:${port}`)
+  console.log(`inotebook App : listening on port at http://localhost:${port}`)
 })
 
 // keep in mind that use npx nodemon <fileName.js> to connect the server don't use only nodemon <fileName.js>
